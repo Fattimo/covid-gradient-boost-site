@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CS 4641 Gradient Boosting Grapher</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content:center;
+                text-align:center;
+                font-family: 'Comic Sans MS';
+            }
+
+            .button-link {
+                background: none!important;
+                border: none;
+                padding: 0!important;
+                /*optional*/
+                font-family: 'Comic Sans MS';
+                /*input has OS specific font-family*/
+                color: #069;
+                text-decoration: underline;
+                width: 100px;
+            }
+
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                padding-bottom: 20px;
+                text-align: center;
+            }
+            .buttons {
+                display: flex;
+                justify-content:center;
+                flex-wrap: wrap;
+            }
+            .graphs {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction:column;
+                align-items: center;
+            }
+            .gb {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 70%
+            }
+            #states {
+                width: 895px;
+                margin-bottom: 10px;
+            }
+            #reset {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+            button {
+                font-family: 'Comic Sans MS'
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CS 4641 COVID-19 Case Prediction: Gradient Boosting</h1>
+        <div id = "gb_container" style = 'display: flex; flex-direction: column; align-items: center;'>
+            Data loading, this may take several seconds! <span style = "font-size: small">(Please don't press about while the data loads)</span>
+        </div>
+        <div id = 'about' style = 'display: none; flex-direction: column; font-size: 16px; align-items: center;'>
+            <p>This site is a showcase of my work for Georgia Tech's CS4641: Machine Learning. This was creted as a visualization
+                tool of the results of our gradient boosting model to predict overall COVID-19 cases given the past 10 days as input.
+                Our model predicts on a county-by-county basis for (almost) the entire United States. To use this tool, simply select a state,
+                select the county of choice, and the data from the results of our model will be plotted. The first 10 days are accurate cumulative numbers
+                from the Johns Hopkins COVID-19 dataset, while the next 7 days are predictions based upon the model.
+            </p>
+            <p>At the time of writing, this model only predicts for the date range of 12/02/2020 to 12/08/2020, as I do not
+                have the resources or effort to host my model on a 100% uptime, so this site just reads from static data off of our Github.
+                I may, from time to time, reupload more up to date predictions based on my model.
+            </p>
+            <p>Again, this site is purely for visualization. To access our code base, visit the <a href = "https://colab.research.google.com/drive/1ZntdjgC9V4vdJsecxb3zQYqGuI8_BeUW?usp=sharing">Google collab here</a>.
+                Click on these links to access our <a href = 'https://github.com/GT-Machine-Learning-COVID-19/COVID-Prediction'>Github</a> or see our <a href = 'https://gt-machine-learning-covid-19.github.io/COVID-Prediction/'>full report</a>, and we have a final presentation video as well, but it has not been recorded
+                at the time of writing this. It will probably be linked as a YouTube video somewhere within the report or the Github.
+            </p>
+            <p>This site was created with React, danfo.js, and plotly. This project is the work of Team 47: Matt Chen, Chima Okechukwu, Trevor Pope, and Sho Szczepaniuk.
+                This site and model were created by Matt Chen.
+            </p>
+            <img src = 'Screenshot_20200405-231034_Gallery.jpg' alt = 'Matt Chen #1' style = 'width: 180px; margin-top: 10px;'>
+        </div>
+        <div style = "display: flex; justify-content: center;" class = 'footer'>
+            <button class = 'button-link' id = 'toggleAbt' onClick = 'showAbout()'>about</button>
+        </div>
+    </body>
+
+    <script>
+        function showAbout() {
+            let gb = document.getElementById('gb_container')
+            let abt = document.getElementById('about')
+            let but = document.getElementById('toggleAbt')
+            if (gb.style.display != "none") {
+                gb.style.display = "none";
+                abt.style.display = "flex"
+                but.innerHTML = 'back'
+            } else {
+                gb.style.display = "flex";
+                abt.style.display = "none"
+                but.innerHTML = 'about'
+            }
+        }
+    </script>
+
+    <!-- React -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- danfo-js -->
+    <script src="https://cdn.jsdelivr.net/npm/danfojs@0.1.2/dist/index.min.js"></script>
+    <!-- plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- Load our React components -->
+    <script src="gradient_boosting.js"></script>
+</html>
