@@ -191,7 +191,7 @@ var Graphs = function (_React$Component3) {
         return React.createElement(
           'div',
           { style: this.props.style, 'class': 'graphs' },
-          'That county was cleaned from our data. Sorry!',
+          'That county was cleaned from our data. Sorry! The graph displayed below is incorrect.',
           React.createElement('div', { id: 'standard' }),
           React.createElement('div', { id: 'urbanRural' }),
           React.createElement('div', { id: 'clusters' })
@@ -208,21 +208,21 @@ var Graphs = function (_React$Component3) {
             'button',
             { onClick: function onClick() {
                 return _this6.setState({ active: 'standard' });
-              } },
+              }, style: { backgroundColor: this.state.active == 'standard' ? "coral" : '' } },
             'Standard'
           ),
           React.createElement(
             'button',
             { onClick: function onClick() {
                 return _this6.setState({ active: 'ur' });
-              } },
+              }, style: { backgroundColor: this.state.active == 'ur' ? "coral" : '' } },
             'Urban Rural'
           ),
           React.createElement(
             'button',
             { onClick: function onClick() {
                 return _this6.setState({ active: 'cluster' });
-              } },
+              }, style: { backgroundColor: this.state.active == 'cluster' ? "coral" : '' } },
             'Clusters'
           )
         ),

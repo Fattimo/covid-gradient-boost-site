@@ -136,7 +136,7 @@ class Graphs extends React.Component {
     if (this.props.fips != 0 && !this.standard.index.includes(this.props.fips.toString())) {
       return (
         <div style = {this.props.style} class = 'graphs'>
-          That county was cleaned from our data. Sorry!
+          That county was cleaned from our data. Sorry! The graph displayed below is incorrect.
           <div id = 'standard'></div>
           <div id = 'urbanRural'></div>
           <div id = 'clusters'></div>
@@ -147,9 +147,9 @@ class Graphs extends React.Component {
     return (
       <div style = {this.props.style} class = 'graphs'>
         <div>
-          <button onClick={() => this.setState({active: 'standard'})}>Standard</button>
-          <button onClick={() => this.setState({active: 'ur'})}>Urban Rural</button>
-          <button onClick={() => this.setState({active: 'cluster'})}>Clusters</button>
+          <button onClick={() => this.setState({active: 'standard'})} style = {{backgroundColor: this.state.active == 'standard' ? "coral" : ''}}>Standard</button>
+          <button onClick={() => this.setState({active: 'ur'})} style = {{backgroundColor: this.state.active == 'ur' ? "coral" : ''}}>Urban Rural</button>
+          <button onClick={() => this.setState({active: 'cluster'})} style = {{backgroundColor: this.state.active == 'cluster' ? "coral" : ''}}>Clusters</button>
         </div>
         <IndividualGraph 
           toPlot = {this.getRowOfData(this.standard, this.props.fips)}
