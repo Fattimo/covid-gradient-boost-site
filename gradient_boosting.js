@@ -129,7 +129,7 @@ var CountyPicker = function (_React$Component2) {
         return React.createElement(
           'div',
           null,
-          'Counties:'
+          ''
         );
       }
       return React.createElement(
